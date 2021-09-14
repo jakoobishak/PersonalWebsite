@@ -1,0 +1,34 @@
+.navbar-brand.mr-2{
+    font-size: 3rem;
+    margin-left: 1rem;
+}
+
+.btn.btn-link{
+    font-size: 1rem;
+    margin-right: 3rem;
+}
+
+main{
+    margin: 5% auto;
+    width: 70%;
+    text-align: center;
+}
+
+footer{
+    margin: 5% auto;
+    width: 70%;
+    text-align: center;
+}
+
+.panel{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.message-box{
+    margin: 50px 50px 50px 50px;
+}
+
+.form-label{
+    margin-bottom: 24px;
+}
