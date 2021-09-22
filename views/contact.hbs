@@ -3,16 +3,38 @@
         <div class="panel-title">Comments</div>
     </div>
     <div class="panel-nav">
-        <!-- navigation components: tabs, breadcrumbs or pagination -->
-
         <div class="message-box">
-            <input class="form-label" type="text" id="input-example-1" placeholder="Name">
-            <textarea class="form-input" id="input-example-1" placeholder="Message" rows="3"></textarea>
+            <form method="post" action="/contact" id="commentForm">
+                <label for="name">Name</label><br>
+                <input id="name" name="name" type="text"><br>
+                <label for="commentText">Comment</label><br>
+                <textarea form="commentForm" id="commentText" name="text" type="text" rows="3"></textarea><br>
+                <input type="submit" value="Submit">
+            </form>
+
         </div>
-        <button class="btn">Send</button>
+
     </div>
     <div class="panel-body">
-        <!-- contents -->
+        {{#if messages.length}}
+        <ul class="comment-list">
+            {{#each messages}}
+            <li>
+                <h3>
+                    Name: {{names}}
+                </h3>
+                <p>
+                    Message: {{messages}}
+                </p>
+            </li>
+            {{/each}}
+        </ul>
+        {{else}}
+        <p>
+            No comments
+        </p>
+        {{/if}}
+
     </div>
     <div class="panel-footer">
 

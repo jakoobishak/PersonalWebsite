@@ -1,0 +1,13 @@
+{{#if project}}
+<h1>
+    {{project.title}}
+</h1>
+<p>
+    {{project.description}}
+</p>
+<a href="{{project.link}}">{{project.link}}</a>
+{{else}}
+<h1>
+    No project found
+</h1>
+{{/if}}

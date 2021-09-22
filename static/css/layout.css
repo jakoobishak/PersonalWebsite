@@ -32,3 +32,29 @@ footer{
 .form-label{
     margin-bottom: 24px;
 }
+
+.login-form{
+    margin-left: 500px; 
+    margin-right: 500px;
+}
+
+#password-label{
+    margin-top: 50px;    
+}
+
+#submit-login-btn{
+    margin-top: 50px;
+}
+
+.comment-list{
+    list-style-type: none;
+}
+
+#name{
+    margin-bottom: 24px;
+}
+
+.projects-list{
+    list-style-type: none;
+    margin-top: 50px;
+}

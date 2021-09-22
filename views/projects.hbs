@@ -1,22 +1,21 @@
-<div class="timeline">
-    <div class="timeline-item" id="timeline-example-1">
-        <div class="timeline-left">
-            <a class="timeline-icon" href="#timeline-example-1"></a>
-        </div>
-        <div class="timeline-content">
-            <<!-- tiles structure -->>
-        </div>
-    </div>
-
-    <div class="timeline-item" id="timeline-example-2">
-        <div class="timeline-left">
-            <a class="timeline-icon icon-lg" href="#timeline-example-2">
-                <i class="icon icon-check"></i>
-            </a>
-        </div>
-        <div class="timeline-content">
-            <!-- tiles structure -->
-        </div>
-    </div>
-    ...
-</div>
+<h1>
+    Projects
+</h1>
+{{#if projects.length}}
+<ul class="projects-list">
+    {{#each projects}}
+    <li>
+        <h3>
+            <a href="/projects/{{id}}">{{title}}</a>
+        </h3>
+        <p>
+            {{description}}
+        </p>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<p>
+    No projects
+</p>
+{{/if}}
