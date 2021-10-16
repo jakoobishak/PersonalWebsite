@@ -1,3 +1,6 @@
+{{#if project.hasDatabaseError}}
+<p>Failed to fetch the data from the database. Please try again later.</p>
+{{else}}
 {{#if project}}
 <h1>
     {{project.title}}
@@ -5,9 +8,14 @@
 <p>
     {{project.description}}
 </p>
-<a href="{{project.link}}">{{project.link}}</a>
+<a href="{{project.linkToProject}}">{{project.linkToProject}}</a><br>
+{{#if isLoggedIn}}
+<a type="button" href="/projects/{{project.id}}/update" class="btn btn-primary">Update project</a>
+<a type="button" href="/projects/{{project.id}}/delete" class="btn btn-primary">Delete project</a>
+{{/if}}
 {{else}}
 <h1>
     No project found
 </h1>
+{{/if}}
 {{/if}}

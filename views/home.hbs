@@ -1,6 +1,29 @@
-<h1>
-    {{welcome.title}}
-</h1>
+{{#if hasDatabaseError}}
+<p>Database failed to fetch the data. Please try again later.</p>
+{{else}}
+{{#if isLoggedIn}}
+<a type="button" href="/create" class="btn btn-primary">Create new post</a>
+{{/if}}
+{{#if welcome.length}}
+<ul class="projects-list">
+    {{#each welcome}}
+    <li>
+        <h3>
+            {{title}}
+        </h3>
+        <p>
+            {{message}}
+        </p>
+        {{#if ../isLoggedIn}}
+        <a type="button" href="{{id}}/update" class="btn btn-primary">Update post</a>
+        <a type="button" href="{{id}}/delete" class="btn btn-primary">Delete post</a>
+        {{/if}}
+    </li>
+    {{/each}}
+</ul>
+{{else}}
 <p>
-    {{welcome.message}}
+    No welcome message
 </p>
+{{/if}}
+{{/if}}

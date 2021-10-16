@@ -1,0 +1,20 @@
+<h1>Update Project</h1>
+
+{{#if errors.length}}
+<p>Couldn't update the projects because:</p>
+<ul>
+    {{#each errors}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+<form method="POST" action="/projects/{{project.id}}/update">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    Title<br>
+    <input type="text" name="title" value="{{project.title}}"><br>
+    Description<br>
+    <textarea name="description">{{project.description}}</textarea><br>
+    Link<br>
+    <textarea name="linkToProject">{{project.linkToProject}}</textarea><br>
+    <input type="submit" value="Update" class="btn btn-primary">
+</form>

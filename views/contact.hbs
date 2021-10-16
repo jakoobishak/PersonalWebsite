@@ -1,31 +1,51 @@
+<h1>Contact</h1>
 <div class="panel">
     <div class="panel-header">
         <div class="panel-title">Comments</div>
     </div>
     <div class="panel-nav">
         <div class="message-box">
-            <form method="post" action="/contact" id="commentForm">
+            <form method="POST" action="/contact" id="commentForm">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <label for="name">Name</label><br>
                 <input id="name" name="name" type="text"><br>
                 <label for="commentText">Comment</label><br>
-                <textarea form="commentForm" id="commentText" name="text" type="text" rows="3"></textarea><br>
-                <input type="submit" value="Submit">
+                <textarea form="commentForm" id="commentText" name="message" type="text" rows="3"></textarea><br>
+                <input type="submit" value="Submit" class="btn btn-primary">
             </form>
 
         </div>
 
     </div>
-    <div class="panel-body">
-        {{#if messages.length}}
+    <div class=" panel-body">
+        {{#if hasDatabaseError}}
+        <p>Failed to fetch the data from the database. Please try again later.</p>
+        {{else}}
+        {{#if errors.length}}
+        <p>Couldn't send comment because:</p>
+        <ul>
+            {{#each errors}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+        {{#if contacts.length}}
         <ul class="comment-list">
-            {{#each messages}}
+            {{#each contacts}}
             <li>
                 <h3>
-                    Name: {{names}}
+                    Name: {{name}}
                 </h3>
                 <p>
-                    Message: {{messages}}
+                    Message: {{message}}
                 </p>
+                <p>
+                    Date: {{date}}
+                </p>
+                {{#if ../isLoggedIn}}
+                <a type="button" href="/contact/{{id}}/update" class="btn btn-primary">Update comment</a>
+                <a type="button" href="/contact/{{id}}/delete" class="btn btn-primary">Delete comment</a>
+                {{/if}}
             </li>
             {{/each}}
         </ul>
@@ -34,7 +54,7 @@
             No comments
         </p>
         {{/if}}
-
+        {{/if}}
     </div>
     <div class="panel-footer">
 

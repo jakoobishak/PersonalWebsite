@@ -1,9 +1,24 @@
+<h1>Login</h1>
+{{#if errors.length}}
+<ul>
+    {{#each errors}}
+    <li>
+        {{this}}
+    </li>
+    {{/each}}
+</ul>
+{{/if}}
+{{#if isLoggedIn}}
+<p>You are logged in!</p>
+{{else}}
 <div class="login-form">
-    <form>
+    <form method="POST" action="/login" class="login">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <label class="form-label" for="username">Username</label>
-        <input class="form-input" type="text" id="username" placeholder="Username">
+        <input class="form-input" type="text" name="username" id="username" placeholder="Username">
         <label class="form-label" for="password" id="password-label">Password</label>
-        <input class="form-input" type="password" id="password" placeholder="Password">
-        <input class="btn btn-primary" type="submit" value="Submit" id="submit-login-btn">
+        <input class="form-input" type="password" name="password" id="password" placeholder="Password">
+        <input class="btn btn-primary" type="submit" value="Login" id="submit-login-btn">
     </form>
 </div>
+{{/if}}

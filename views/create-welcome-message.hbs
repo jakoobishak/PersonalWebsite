@@ -1,0 +1,22 @@
+<h1>Create welcome message</h1>
+
+{{#if hasDatabaseError}}
+<p>Failed trying to insert data to the database. Please try again later.</p>
+{{else}}
+{{#if errors.length}}
+<p>Couldn't create the welcome message because:</p>
+<ul>
+    {{#each errors}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+<form method="POST" action="/create">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    Title<br>
+    <input type="text" name="title"><br>
+    Description<br>
+    <textarea name="message"></textarea><br>
+    <input type="submit" value="Create" class="btn btn-primary">
+</form>
+{{/if}}

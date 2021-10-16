@@ -3,9 +3,9 @@
     margin-left: 1rem;
 }
 
-.btn.btn-link{
+.btn.btn-lg{
     font-size: 1rem;
-    margin-right: 3rem;
+    margin-right: 20px;
 }
 
 main{
@@ -21,8 +21,9 @@ footer{
 }
 
 .panel{
-    margin-left: 300px;
-    margin-right: 300px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .message-box{
@@ -34,9 +35,11 @@ footer{
 }
 
 .login-form{
-    margin-left: 500px; 
-    margin-right: 500px;
-}
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+} 
 
 #password-label{
     margin-top: 50px;    

@@ -1,0 +1,12 @@
+<h1>Logout</h1>
+{{#if isLoggedIn}}
+<p>You are not logged in.</p>
+{{else}}
+<p>Are you sure you want to logout?</p><br>
+<div class="login-form">
+    <form method="POST" action="/logout">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button class="btn btn-primary">Logout</button>
+    </form>
+</div>
+{{/if}}

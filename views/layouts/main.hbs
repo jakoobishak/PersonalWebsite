@@ -17,10 +17,14 @@
             <a href="/home" class="navbar-brand mr-2">JAKOOBISHAK</a>
         </section>
         <section class="navbar-section">
-            <a href="/home" class="btn btn-link">Home</a>
-            <a href="/contact" class="btn btn-link">Contact</a>
-            <a href="/projects" class="btn btn-link">Projects</a>
-            <a href="/login" class="btn btn-link">Login</a>
+            <a href="/home" class="btn btn-lg">Home</a>
+            <a href="/contact" class="btn btn-lg">Contact</a>
+            <a href="/projects" class="btn btn-lg">Projects</a>
+            {{#if session.isLoggedIn}}
+            <a href="/logout" class="btn btn-lg">Logout</a>
+            {{else}}
+            <a href="/login" class="btn btn-lg">Login</a>
+            {{/if}}
         </section>
     </header>
     <div class="divider"></div>

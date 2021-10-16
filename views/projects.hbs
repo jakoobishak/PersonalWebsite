@@ -1,6 +1,11 @@
-<h1>
-    Projects
-</h1>
+<h1>Projects</h1>
+
+{{#if hasDatabaseError}}
+<p>Database failed to fetch the data. Please try again later.</p>
+{{else}}
+{{#if isLoggedIn}}
+<a type="button" href="/projects/create" class="btn btn-primary">Create new project</a>
+{{/if}}
 {{#if projects.length}}
 <ul class="projects-list">
     {{#each projects}}
@@ -18,4 +23,5 @@
 <p>
     No projects
 </p>
+{{/if}}
 {{/if}}

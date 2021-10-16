@@ -1,0 +1,21 @@
+<h1>Update Contact message</h1>
+
+{{#if errors.length}}
+<p>Couldn't update the contacts because:</p>
+<ul>
+    {{#each errors}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+
+{{#if contact}}
+<form method="POST" action="/contact/{{contact.id}}/update">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    Title<br>
+    <input type="text" name="name" value="{{contact.name}}"><br>
+    Message<br>
+    <textarea name="message">{{contact.message}}</textarea><br>
+    <input type="submit" value="Update" class="btn btn-primary">
+</form>
+{{/if}}

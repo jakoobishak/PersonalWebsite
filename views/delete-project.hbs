@@ -1,0 +1,18 @@
+{{#if hasDatabaseError}}
+<p>Database failed to fetch the data. Please try again later.</p>
+{{else}}
+{{#if errors.length}}
+<p>Couldn't delete the contact because:</p>
+<ul>
+    {{#each errors}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+<h1>Delete project</h1>
+<p>Are you sure you want to delete the project named {{project.title}}?</p>
+<form method="POST" action="/projects/{{project.id}}/delete">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <input type="submit" value="Delete" class="btn btn-primary">
+</form>
+{{/if}}

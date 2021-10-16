@@ -1,0 +1,18 @@
+<h1>Update Welcome Message</h1>
+
+{{#if errors.length}}
+<p>Couldn't update the welcome message because:</p>
+<ul>
+    {{#each errors}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+<form method="POST" action="/{{welcome.id}}/update">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    Title<br>
+    <input type="text" name="title" value="{{welcome.title}}"><br>
+    Description<br>
+    <textarea name="message">{{welcome.message}}</textarea><br>
+    <input type="submit" value="Update" class="btn btn-primary">
+</form>
