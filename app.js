@@ -31,7 +31,6 @@ app.use(expressSession({
     })
 }))
 
-//kod
 app.use(function (request, response, next) {
     response.locals.session = request.session
     response.locals.csrfToken = request.csrfToken()
