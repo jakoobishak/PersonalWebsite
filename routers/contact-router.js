@@ -26,6 +26,7 @@ router.get("/", function (request, response) {
     })
 })
 
+//hello
 router.post("/", function (request, response) {
     const name = request.body.name
     const message = request.body.message
