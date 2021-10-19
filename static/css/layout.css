@@ -61,3 +61,8 @@ footer{
     list-style-type: none;
     margin-top: 50px;
 }
+
+.errors{
+    color: red;
+    list-style-type: none;
+}

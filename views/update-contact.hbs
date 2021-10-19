@@ -4,12 +4,10 @@
 <p>Couldn't update the contacts because:</p>
 <ul>
     {{#each errors}}
-    <li>{{this}}</li>
+    <li class="errors">{{this}}</li>
     {{/each}}
 </ul>
 {{/if}}
-
-{{#if contact}}
 <form method="POST" action="/contact/{{contact.id}}/update">
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     Title<br>
@@ -18,4 +16,3 @@
     <textarea name="message">{{contact.message}}</textarea><br>
     <input type="submit" value="Update" class="btn btn-primary">
 </form>
-{{/if}}

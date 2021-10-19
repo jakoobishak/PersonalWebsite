@@ -5,13 +5,13 @@
 <p>Couldn't delete the contact because:</p>
 <ul>
     {{#each errors}}
-    <li>{{this}}</li>
+    <li class="errors">{{this}}</li>
     {{/each}}
 </ul>
 {{/if}}
 <h1>Delete comment</h1>
-<p>Are you sure you want to delete the contact named {{contacts.name}}?</p>
-<form method="POST" action="/contact/{{contacts.id}}/delete">
+<p>Are you sure you want to delete the contact named {{contact.name}}?</p>
+<form method="POST" action="/contact/{{contact.id}}/delete">
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <input type="submit" value="Delete" class="btn btn-primary">
 </form>

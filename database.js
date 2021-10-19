@@ -15,8 +15,7 @@ db.run(`
         CREATE TABLE IF NOT EXISTS contacts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
-            message TEXT,
-            date TEXT
+            message TEXT
         )
 `)
 
@@ -82,9 +81,9 @@ exports.getAllContactMessages = function (callback) {
     })
 }
 
-exports.createContactMessage = function (name, message, date, callback) {
-    const query = "INSERT INTO contacts (name, message, date) VALUES (?, ?, ?)"
-    const values = [name, message, date]
+exports.createContactMessage = function (name, message, callback) {
+    const query = "INSERT INTO contacts (name, message) VALUES (?, ?)"
+    const values = [name, message]
 
     db.run(query, values, function (error) {
         callback(error, this.lastID)
@@ -100,9 +99,9 @@ exports.getContactMessagesById = function (id, callback) {
     })
 }
 
-exports.updateContactById = function (id, name, message, date, callback) {
-    const query = "UPDATE contacts SET name = ?, message = ?, date = ? WHERE id = ?"
-    const values = [name, message, date, id]
+exports.updateContactById = function (id, name, message, callback) {
+    const query = "UPDATE contacts SET name = ?, message = ? WHERE id = ?"
+    const values = [name, message, id]
 
     db.run(query, values, function (error) {
         callback(error)

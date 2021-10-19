@@ -8,14 +8,13 @@
             <form method="POST" action="/contact" id="commentForm">
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <label for="name">Name</label><br>
-                <input id="name" name="name" type="text"><br>
+                <input id="name" name="name" type="text" value="{{contacts.name}}"><br>
                 <label for="commentText">Comment</label><br>
-                <textarea form="commentForm" id="commentText" name="message" type="text" rows="3"></textarea><br>
+                <textarea form="commentForm" id="commentText" name="message" type="text"
+                    rows="3">{{contacts.message}}</textarea><br>
                 <input type="submit" value="Submit" class="btn btn-primary">
             </form>
-
         </div>
-
     </div>
     <div class=" panel-body">
         {{#if hasDatabaseError}}
@@ -25,7 +24,7 @@
         <p>Couldn't send comment because:</p>
         <ul>
             {{#each errors}}
-            <li>{{this}}</li>
+            <li class="errors">{{this}}</li>
             {{/each}}
         </ul>
         {{/if}}
@@ -38,9 +37,6 @@
                 </h3>
                 <p>
                     Message: {{message}}
-                </p>
-                <p>
-                    Date: {{date}}
                 </p>
                 {{#if ../isLoggedIn}}
                 <a type="button" href="/contact/{{id}}/update" class="btn btn-primary">Update comment</a>

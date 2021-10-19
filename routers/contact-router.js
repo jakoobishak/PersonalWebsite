@@ -29,25 +29,19 @@ router.get("/", function (request, response) {
 router.post("/", function (request, response) {
     const name = request.body.name
     const message = request.body.message
-
-    let date = new Date();
-    let dd = String(date.getDate()).padStart(2, '0');
-    let mm = String(date.getMonth() + 1).padStart(2, '0');
-    let yyyy = date.getFullYear();
-    date = yyyy + '/' + mm + '/' + dd;
+    const loggedIn = request.session.isLoggedIn
 
     const errors = validators.getValidationErrorsForContact(name, message)
 
     if (errors.length == 0) {
-        db.createContactMessage(name, message, date, function (error) {
+        db.createContactMessage(name, message, function (error) {
             if (error) {
                 errors.push("Internal server error.")
 
                 const model = {
                     errors,
                     name,
-                    message,
-                    date
+                    message
                 }
 
                 response.render('contact.hbs', model)
@@ -61,12 +55,14 @@ router.post("/", function (request, response) {
                 errors.push("Internal server error.")
                 const model = {
                     errors,
+                    isLoggedIn: loggedIn,
                     contacts
                 }
                 response.render("contact.hbs", model)
             } else {
                 const model = {
                     errors,
+                    isLoggedIn: loggedIn,
                     contacts
                 }
                 response.render("contact.hbs", model)
@@ -84,7 +80,7 @@ router.get("/:id/update", validators.redirectIfNotLoggedIn, function (request, r
             console.log('contact error', error)
             const model = {
                 hasDatabaseError: true,
-                contacts: []
+                contact: []
             }
             response.render("contact.hbs", model)
         } else {
@@ -102,16 +98,10 @@ router.post("/:id/update", validators.redirectIfNotLoggedIn, function (request, 
     const name = request.body.name
     const message = request.body.message
 
-    let date = new Date();
-    let dd = String(date.getDate()).padStart(2, '0');
-    let mm = String(date.getMonth() + 1).padStart(2, '0');
-    let yyyy = date.getFullYear();
-    date = "EDITED: " + yyyy + '/' + mm + '/' + dd;
-
     const errors = validators.getValidationErrorsForContact(name, message)
 
     if (errors.length == 0) {
-        db.updateContactById(id, name, message, date, function (error) {
+        db.updateContactById(id, name, message, function (error) {
 
             if (error) {
                 errors.push("Internal server error.")
@@ -119,8 +109,7 @@ router.post("/:id/update", validators.redirectIfNotLoggedIn, function (request, 
                 const model = {
                     errors,
                     name,
-                    message,
-                    date
+                    message
                 }
                 response.render("update-contact.hbs", model)
             } else {
@@ -130,11 +119,10 @@ router.post("/:id/update", validators.redirectIfNotLoggedIn, function (request, 
     } else {
         const model = {
             errors,
-            contacts: {
+            contact: {
                 id,
                 name,
-                message,
-                date
+                message
             }
         }
         response.render("update-contact.hbs", model)
@@ -146,19 +134,19 @@ router.post("/:id/update", validators.redirectIfNotLoggedIn, function (request, 
 router.get("/:id/delete", validators.redirectIfNotLoggedIn, function (request, response) {
     const id = request.params.id
 
-    db.getContactMessagesById(id, function (error, contacts) {
+    db.getContactMessagesById(id, function (error, contact) {
 
         if (error) {
             const model = {
                 hasDatabaseError: true,
-                contacts: []
+                contact: []
             }
             response.render("delete-contact.hbs", model)
 
         } else {
             const model = {
                 hasDatabaseError: false,
-                contacts
+                contact
             }
             response.render("delete-contact.hbs", model)
         }
