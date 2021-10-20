@@ -8,10 +8,10 @@
             <form method="POST" action="/contact" id="commentForm">
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <label for="name">Name</label><br>
-                <input id="name" name="name" type="text" value="{{contacts.name}}"><br>
+                <input id="name" name="name" type="text" value="{{name}}"><br>
                 <label for="commentText">Comment</label><br>
                 <textarea form="commentForm" id="commentText" name="message" type="text"
-                    rows="3">{{contacts.message}}</textarea><br>
+                    rows="3">{{message}}</textarea><br>
                 <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>

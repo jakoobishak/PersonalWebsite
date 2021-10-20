@@ -56,6 +56,8 @@ router.post("/", function (request, response) {
                 const model = {
                     errors,
                     isLoggedIn: loggedIn,
+                    name,
+                    message,
                     contacts
                 }
                 response.render("contact.hbs", model)
@@ -63,7 +65,10 @@ router.post("/", function (request, response) {
                 const model = {
                     errors,
                     isLoggedIn: loggedIn,
+                    name,
+                    message,
                     contacts
+
                 }
                 response.render("contact.hbs", model)
             }

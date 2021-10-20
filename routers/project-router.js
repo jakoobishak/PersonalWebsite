@@ -36,8 +36,6 @@ router.post('/create', validators.redirectIfNotLoggedIn, function (request, resp
     const description = request.body.description
     let linkToProject = request.body.linkToProject
 
-    console.log(linkToProject)
-
     const errors = validators.getValidationErrorsForProject(title, description, linkToProject)
 
     if (!linkToProject.includes("https://"))

@@ -21,7 +21,7 @@ router.post("/login", function (request, response) {
     if (username == auth.adminAuthentication.username) {
         bcrypt.compare(password, hashedPassword, function (error, result) {
             if (error) {
-                errors.push("Incorrect login credentials! Try again.")
+                errors.push("Internal server error.")
                 response.render("login.hbs", { errors })
             } else {
                 if (result == true) {
