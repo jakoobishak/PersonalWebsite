@@ -72,6 +72,9 @@ router.get("/:id/update", validators.redirectIfNotLoggedIn, function (request, r
     const id = request.params.id
 
     db.getWelcomeMessageById(id, function (error, welcome) {
+        if (welcome == undefined) {
+            return response.render('404.hbs')
+        }
         if (error) {
             const model = {
                 hasDatabaseError: true,
@@ -130,7 +133,9 @@ router.get("/:id/delete", validators.redirectIfNotLoggedIn, function (request, r
     const id = request.params.id
 
     db.getWelcomeMessageById(id, function (error, welcome) {
-
+        if (welcome == undefined) {
+            return response.render('404.hbs')
+        }
         if (error) {
             const model = {
                 hasDatabaseError: true,

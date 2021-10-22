@@ -81,6 +81,9 @@ router.get("/:id/update", validators.redirectIfNotLoggedIn, function (request, r
     const id = request.params.id
 
     db.getContactMessagesById(id, function (error, contact) {
+        if (contact == undefined) {
+            return response.render('404.hbs')
+        }
         if (error) {
             console.log('contact error', error)
             const model = {
@@ -140,7 +143,9 @@ router.get("/:id/delete", validators.redirectIfNotLoggedIn, function (request, r
     const id = request.params.id
 
     db.getContactMessagesById(id, function (error, contact) {
-
+        if (contact == undefined) {
+            return response.render('404.hbs')
+        }
         if (error) {
             const model = {
                 hasDatabaseError: true,
