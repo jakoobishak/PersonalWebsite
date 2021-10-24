@@ -1,1 +1,6 @@
-{"adminAuthentication":{"username":"jakoob","password":"$2b$10$EvhRt33PRJ48RgCax./geOY/dFrGjK4Yx6Ia9Ceztzmz6gHaqhq.."}}
+{
+    "adminAuthentication": {
+        "username": "Admin",
+        "password": "$2b$10$HDZYg003/ukcFOw1qDzAFuV.x8CwacG/41jBVsvjM97Ym7w6VIi2."
+    }
+}
