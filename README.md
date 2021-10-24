@@ -4,7 +4,7 @@ This is my personal website.
 
 Run node app.js to start the app.
 
-Login URI: http://localhost:8080/login
+Login URI: /login
 
 Admin login:
 Username: Admin
