@@ -162,7 +162,7 @@ exports.deleteProjectById = function (id, callback) {
     })
 }
 
-//ADMIN
+// FOR ADMIN
 exports.createAccount = function (username, password, callback) {
     const query = "INSERT INTO admin (username, password) VALUES (?, ?)"
     const values = [username, password]

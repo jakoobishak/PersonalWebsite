@@ -138,7 +138,6 @@ router.post("/:id/update", validators.redirectIfNotLoggedIn, function (request, 
 
 })
 
-
 router.get("/:id/delete", validators.redirectIfNotLoggedIn, function (request, response) {
     const id = request.params.id
 
